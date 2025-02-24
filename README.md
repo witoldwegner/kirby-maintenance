@@ -28,6 +28,7 @@ return [
         'ignore' => [],
         'css' => false,
         'text' => 'This website is currently under maintenance and will be back online soon.',
+        'allowed-users' => []
     ]
 ];
 ```
@@ -50,6 +51,27 @@ You can also use one of the prefabricated blueprint parts:
 You could also add a `/.maintenance` file to the Kirby root directory to switch on maintenance mode. This method is used by [bnomei/kirby3-janitor](https://github.com/bnomei/kirby3-janitor) plugin. If you enter any text inside that file, this will be the output when the site is in maintenance mode.
 
 Suggested by https://github.com/moritzebeling/kirby-maintenance/issues/1
+
+## Allow page-access only to certain users
+
+With the `moritzebeling.kirby-maintenance.allowed-users`option you allow access only to certain users, e.g. for the development-team to check changes before allowing access to the content-team
+
+```php
+// site/config.php
+return [
+    // one line switch
+    'maintenance' => true,
+
+    // more detailed configuration
+    'moritzebeling.kirby-maintenance' => [
+      'allowed-users' => env('KIRBY_MAINTENANCE_ALLOWED_USERS') ? explode(',', env('KIRBY_MAINTENANCE_ALLOWED_USERS')) : []
+    ]
+```
+
+```dotenv
+# .env
+KIRBY_MAINTENANCE_ALLOWED_USERS=deployer1@develop.team,deployer2@develop.team
+```
 
 ## Add style
 

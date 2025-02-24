@@ -55,7 +55,15 @@ class Maintenance {
     }
 
     public function showPageToLoggedinUser(){
-        return $this->kirby->user() ? true : false;
+        $user = $this->kirby->user();
+        if (!$user) {
+            return false;
+        }
+        $allowedUsers = $this->kirby->option('moritzebeling.kirby-maintenance.allowed-users', []);
+        if (count($allowedUsers) === 0) {
+            return true;
+        }
+        return in_array($user->email(), $allowedUsers);
     }
 
     public function setHeaders(){
