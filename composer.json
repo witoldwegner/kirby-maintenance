@@ -1,7 +1,7 @@
 {
-    "name": "witoldwegner/kirby-maintenance",
+    "name": "moritzebeling/kirby-maintenance",
     "description": "Kirby Maintenance mode plugin",
-    "version": "1.0.2",
+    "version": "1.0.0",
     "type": "kirby-plugin",
     "homepage": "https://github.com/moritzebeling/kirby-maintenance",
     "time": "2023-01-22",
